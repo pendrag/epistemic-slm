@@ -4,6 +4,5 @@ transformers
 pandas 
 tqdm 
 datasets 
-logging
 matplotlib
 seaborn

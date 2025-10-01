@@ -7,7 +7,6 @@ Original file is located at
     https://colab.research.google.com/drive/1EZX68a49C7LOwdL_EQ9nHqgkp5u6Iml0
 """
 
-!pip install scikit-learn peft transformers pandas pyyaml tqdm datasets logging
 
 # --- Cell 1: Imports and Config ---
 import os
@@ -27,10 +26,6 @@ from sklearn.metrics import accuracy_score, classification_report
 import matplotlib.pyplot as plt
 import seaborn as sns
 from tqdm import tqdm
-import logging
-
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
 
 # --- Cell 2: Configuration ---
 
