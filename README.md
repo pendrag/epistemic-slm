@@ -17,9 +17,9 @@ Configuration is managed via YAML files like config.yaml, and results are saved 
 pip install -r requirements.txt
 ```
 
-2. Configure the experiment by editing ``config.yaml`` as needed.
+2. Configure the experiment by editing ``epistemic_experiment.py`` as needed.
 
 3. Run the main script:
 ```bash
-python epistemic_experiment.py --config config.yaml
+python epistemic_experiment.py 
 ```

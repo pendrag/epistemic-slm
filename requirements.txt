@@ -1,1 +1,9 @@
-PyYAML==6.0.3
+scikit-learn 
+peft 
+transformers 
+pandas 
+tqdm 
+datasets 
+logging
+matplotlib
+seaborn
