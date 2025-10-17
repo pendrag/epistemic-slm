@@ -71,6 +71,12 @@ config = {
 }
 os.makedirs(config['paths']['output_dir'], exist_ok=True)
 
+class Logger:
+    def info(*args):
+        print("[INFO]", *args)
+
+logger = Logger()
+
 # --- Cell 3: Load Dataset ---
 def load_qa_dataset(config):
     dataset_name = config['dataset']['name']
