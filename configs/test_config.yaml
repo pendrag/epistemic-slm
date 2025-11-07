@@ -1,0 +1,4 @@
+base_model_name: "/mnt/beegfs/sinai-data/Qwen/Qwen2.5-0.5B-Instruct"
+model_name: "/mnt/beegfs/jcollado/tesis/epistemic-slm/output_model/checkpoint-3500"
+qa_dataset: "/mnt/beegfs/jcollado/tesis/epistemic-slm/datasets/commonsense_qa/data"
+output_dir: "/mnt/beegfs/jcollado/tesis/epistemic-slm/test_results"             # Where to save model checkpoints/results

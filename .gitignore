@@ -2,6 +2,10 @@ models/
 datasets/
 slurm-out/
 epistemic_experiment_results/
+trainer_output/
+output_model
+wandb/
+__pycache__/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

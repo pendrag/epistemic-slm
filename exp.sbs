@@ -1,18 +1,14 @@
 #!/bin/bash
 
-#SBATCH --job-name=epistemic-slm-dialog-gpt
+#SBATCH --job-name=epistemic-slm
 #SBATCH --partition=normal
 #SBATCH --nodes=1
 #SBATCH --time=99:00:00
 #SBATCH --ntasks=1
-#SBATCH --mem=128G
-#SBATCH --mail-type=ALL
-##SBATCH --gres=gpu:tesla:2
-##SBATCH --gres=gpu:ampere:4
-#SBATCH --gres=gpu:2
-#SBATCH --mail-user=amontejo@ujaen.es
-#SBATCH --output="/mnt/beegfs/amontejo/slurm-out/exp-%A_%a-epistemic-slm-dialog-gpt.out"
-#SBATCH --error="/mnt/beegfs/amontejo/slurm-out/exp-%A_%a-epistemic-slm-dialog-gpt.err"
+#SBATCH --mem=64G
+#SBATCH --gres=gpu:rtx:4
+#SBATCH --output="slurm-out/exp-%A_%a.out"
+#SBATCH --error="slurm-out/exp-%A_%a.err"
 
 # Limpieza de módulos cargados
 module purge
@@ -22,11 +18,8 @@ spack load miniconda3
 spack load cuda@12.1
 
 # Activación de entorno virtual
-source /usr/local/spack/opt/spack/linux-centos7-x86_64/gcc-8.2.0/miniconda3-4.7.12.1-ux3x64lg7t2cfgdv5djfhf62umq7qcmu/etc/profile.d/conda.sh
-conda activate dl
+source venv/bin/activate
 
 # Ejecución del script
-python /mnt/beegfs/amontejo/epistemic-slm/epistemic_experiment.py
-
-# Otros scripts...
-# srun ...
+python src/train_model.py configs/train_config.yaml
+# python src/test_results.py configs/test_config.yaml

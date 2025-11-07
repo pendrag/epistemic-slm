@@ -1,0 +1,20 @@
+training_type: "dpo"                 # Options: "dpo" for just DPO or "lora"
+
+# PATHS
+model_name: "/mnt/beegfs/sinai-data/Qwen/Qwen2.5-0.5B-Instruct"
+qa_dataset: "/mnt/beegfs/jcollado/tesis/epistemic-slm/datasets/commonsense_qa/data"
+preference_dataset: "/mnt/beegfs/jcollado/tesis/epistemic-slm/datasets/jcollado/commonsense_qa_Qwen2.5-0.5B-Instruct_preferences"
+output_dir: "/mnt/beegfs/jcollado/tesis/epistemic-slm/output_model"             # Where to save model checkpoints/results
+
+# TRAINING HYPERPARAMETERS
+per_device_train_batch_size: 16      # Per device train batch size
+per_device_eval_batch_size: 16       # Per device train batch size
+num_train_epochs: 10                 # Number of epochs
+learning_rate: 5.0e-6               # Learning rate
+early_stopping_patience: 5          # Patience before stopping
+eval_steps: 500                     # Evaluation interval
+save_steps: 500                     # Checkpoint saving interval
+logging_steps: 100                  # Logging interval
+eval_split: 0.1                     # Fraction of data held out for evaluation
+use_wandb: True                     # Whether to use Weights & Biases for logging
+dpo_beta: 0.1                       # DPO regularization KL factor
