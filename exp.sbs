@@ -6,7 +6,8 @@
 #SBATCH --time=99:00:00
 #SBATCH --ntasks=1
 #SBATCH --mem=64G
-#SBATCH --gres=gpu:rtx:4
+#SBATCH --gres=gpu:tesla:2
+##SBATCH --nodelist=nodo05
 #SBATCH --output="slurm-out/exp-%A_%a.out"
 #SBATCH --error="slurm-out/exp-%A_%a.err"
 
@@ -21,5 +22,7 @@ spack load cuda@12.1
 source venv/bin/activate
 
 # Ejecución del script
-python src/train_model.py configs/train_config.yaml
-# python src/test_results.py configs/test_config.yaml
+python src_v2/inference.py configs/config.yaml # Cambiar eval_dpo_model en config.yaml 
+# python src_v2/generate_preference_data.py configs/config.yaml
+# python src_v2/train.py configs/config.yaml
+# accelerate launch --config_file configs/accelerate_config.yml src_v2/train.py configs/config.yaml

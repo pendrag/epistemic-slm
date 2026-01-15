@@ -1,0 +1,30 @@
+training_type: "lora"                 # Options: "dpo" for just DPO or "lora"
+eval_dpo_model: False            
+use_accelerate: True             # Whether to use HuggingFace Accelerate for distributed training
+
+# PATHS
+model_name: "/mnt/beegfs/sinai-data/Qwen/Qwen3-8B"
+base_ds: "/mnt/beegfs/jcollado/tesis/epistemic-slm/datasets/commonsense_qa/data"
+output_ds: "/mnt/beegfs/jcollado/tesis/epistemic-slm/datasets/custom/commonsense_qa"
+output_dir: "/mnt/beegfs/jcollado/tesis/epistemic-slm/output_model"             # Where to save model checkpoints/results
+dpo_model: "/mnt/beegfs/jcollado/tesis/epistemic-slm/output_model/Qwen2-0.5B-DPO_lr1e-05_beta1.0_r1_alpha2_do0.0"
+
+# TRAINING HYPERPARAMETERS
+per_device_train_batch_size: 32      # Per device train batch size (<= 32 for LoRA)
+per_device_eval_batch_size: 32       # Per device train batch size
+num_train_epochs: 10                 # Number of epochs
+learning_rate: 1.0e-6               # Learning rate
+early_stopping_patience: 10          # Evaluation patience for early stopping
+save_steps: 200                     # Checkpoint saving interval
+eval_steps: 200                     # Evaluation interval
+logging_steps: 100                  # Logging interval
+eval_split: 0.1                     # Fraction of data held out for evaluation
+use_wandb: True                     # Whether to use Weights & Biases for logging
+dpo_beta: 0.5                       # The smaller, the more we ignore the reference model (typically 0.1 to 0.5)
+
+# LoRA HYPERPARAMETERS (see LoRA without regrets: https://thinkingmachines.ai/blog/lora/)
+lora_lr: 1.0e-5                     # LoRA learning rate (from 2e-4 to 5e-6, ~10x SFT learning rate)
+lora_r: 1                           # LoRA rank (~1-32 for RL)
+lora_alpha: 2                      # LoRA alpha (= rank to ~2x rank)
+lora_dropout: 0.0                   # LoRA dropout
+lora_target_modules: "all-linear"   # Target modules for LoRA adaptation
